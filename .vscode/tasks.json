@@ -4,6 +4,7 @@
         {
             "label": "venv",
             "type": "shell",
+            "dependsOn": "memesourcefolder",
             "command": "python -m venv .venv",
         },
         {
@@ -19,7 +20,33 @@
             "osx": {
                 "command": "${config:python.venv}/bin/python -m pip install -r requirements.txt",
             },
-
         },
+        {
+            "label": "memesourcefolder",
+            "type": "shell",
+            "dependsOn": "memeout",
+            "windows":{
+                "command": "md ${workspaceFolder}\\memesource || echo 'directory exists'",
+            },
+            "linux": {
+                "command": "mkdir -p ${workspaceFolder}/memesource",
+            },
+            "osx":{
+                "command": "mkdir -p ${workspaceFolder}/memesource",
+            }
+        },
+        {
+            "label": "memeout",
+            "type": "shell",
+            "windows":{
+                "command": "md ${workspaceFolder}\\memeout || echo 'directory exists'",
+            },
+            "linux": {
+                "command": "mkdir -p ${workspaceFolder}/memeout",
+            },
+            "osx":{
+                "command": "mkdir -p ${workspaceFolder}/memeout",
+            }
+        }
     ]
 }
