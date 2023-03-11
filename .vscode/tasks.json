@@ -1,0 +1,25 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "venv",
+            "type": "shell",
+            "command": "python -m venv .venv",
+        },
+        {
+            "label": "pip install",
+            "type": "shell",
+            "dependsOn": "venv",
+            "windows": {
+                "command": "${config:python.venv}\\Scripts\\python -m pip install -r requirements.txt",
+            },
+            "linux": {
+                "command": "${config:python.venv}/bin/python -m pip install -r requirements.txt",
+            },
+            "osx": {
+                "command": "${config:python.venv}/bin/python -m pip install -r requirements.txt",
+            },
+
+        },
+    ]
+}
